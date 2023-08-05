@@ -102,3 +102,61 @@
 
 여러분의 컴포넌트이므로 prop 이름은 여러분 마음대로 정할 수 있습니다. 하지만 값을 설정(<User age={31} />)하고 접근(props.age)할 때 항상 같은 이름을 사용해야 합니다.
 ```
+
+## 61. 주요 개념 데이터 추출하기
+
+1. 첫번째 과제 : 데이터는 이미 있어서 그 데이트를 아래로 츌력하는 것임
+   그 concepts 배열에 있는 데이터에 다이내믹하게 액세스하는 게 목표죠
+
+```
+img의 src를 {concepts[0].image라른 키를 넣으면 된다}
+alt도 마찬가지로 {concepts[0].title}
+h2 태그에는 제목이 들어가야되서
+{concepts[0].title}를 써야된다.
+p태그 안에는 설명이 있어서
+{concepts[0].description}를 써야된다
+
+concepts의 객체의 배열이 총 2개가 더 있어서
+<li className="concept">
+          <img src={stateImage} alt={concepts[1].title} />
+          <h2>{concepts[1].title}</h2>
+          <p>{concepts[1].description}</p>
+        </li>
+        <li className="concept">
+          <img src={eventsImage} alt={concepts[2].title} />
+          <h2>{concepts[2].title}</h2>
+          <p>{concepts[2].description}</p>
+</li>
+```
+
+2. 두번째 과제는 컴포넌트를 알아내는 과제
+
+## 62. 가능한 컴포넌트 식별하기
+
+- 방금 작성한 ul>li를 컴포넌트로 따로 빼서 작업을 해도 될것 같아요
+- 만약에 데이터 값이 변경 및 수정이 되면 그 값을 일일이 수정을 해야하는데 그 작업이 완전 불필요한 반복 작업이에요
+
+## 63. 사용자 정의 컴포넌트를 만들고 사용하기
+
+- scr\component\Header.js를 생성
+- App.js 안에 있는 header 영역을 코드를 옮기는 작업
+- 이미지 경로도 수정을 하기
+
+```
+App.js 코드
+import keyConceptsImage from "../../src/assets/images/key-concepts.png";
+
+function Header() {
+  return (
+    <header>
+      <img src={keyConceptsImage} alt="Medal badge with a star" />
+      <h1>Key React Concepts</h1>
+      <p>Selected key React concepts you should know about</p>
+    </header>
+  );
+}
+
+export default Header;
+```
+
+## 64. 컨셉 항목을 재사용 가능한 컴포넌트로 아웃소싱하기
